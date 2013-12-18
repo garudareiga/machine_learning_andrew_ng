@@ -21,10 +21,16 @@ idx = zeros(size(X,1), 1);
 % Note: You can use a for-loop over the examples to compute this.
 %
 
-
-
-
-
+for i = 1:size(X,1)
+    min_dist = inf;
+    for j = 1:K
+        curr_dist = (X(i,:) - centroids(j,:))*(X(i,:) - centroids(j,:))';
+        if curr_dist < min_dist
+            idx(i) = j;
+            min_dist = curr_dist;
+        end
+    end
+end
 
 
 % =============================================================
